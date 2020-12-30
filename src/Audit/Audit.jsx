@@ -99,10 +99,10 @@ class Auditpage extends React.Component {
                             search
                             version='4'
                         >
-                            <TableHeaderColumn isKey dataField='id' width='25%'>ID</TableHeaderColumn>
-                            <TableHeaderColumn dataField='role' width='20%'>Role</TableHeaderColumn>
+                            <TableHeaderColumn isKey dataField='id' width='30%'>ID</TableHeaderColumn>
+                            <TableHeaderColumn dataField='role' width='10%'>Role</TableHeaderColumn>
                             <TableHeaderColumn dataField='createdDate' 
-                            dataFormat={this.state.timeFormat === "12hours"?this.get12hrFormat :this.get24hrFormat} width='25%'>Created Date</TableHeaderColumn>
+                            dataFormat={this.state.timeFormat === "12hours"?this.get12hrFormat :this.get24hrFormat} width='30%'>Created Date</TableHeaderColumn>
                             <TableHeaderColumn dataField='firstName' width='15%'>First Name</TableHeaderColumn>
                             <TableHeaderColumn dataField='lastName' width='15%'>Last Name</TableHeaderColumn>
                         </BootstrapTable>
