@@ -27,35 +27,21 @@ class Auditpage extends React.Component {
     }
 
     get12hrFormat(createdDate) {
-        var date = new Date(createdDate);
-        return date.toLocaleString();
+        var dateTime = new Date(createdDate);
+        let dateTimeSplit = dateTime.toLocaleString().split(',');
+        let mmddyyyy = dateTimeSplit[0];
+        let dateSplit = mmddyyyy.split('/');
+        let ddmmyyyy = dateSplit[1]+'/'+dateSplit[0]+'/'+dateSplit[2]
+        return ddmmyyyy+', '+dateTimeSplit[1];
     }
 
     get24hrFormat(createdDate){
-        var date = new Date(createdDate);
-        var formattedDate = date.toLocaleString();
-        let splitDate = formattedDate.split(',');
-        let time_24h = this.get24hTime(splitDate[1]);
-        return splitDate[0]+', '+time_24h;
+        var dateTime = new Date(createdDate);
+        return dateTime.toLocaleString("en-GB");
     }
 
     getTimeFormat(eventKey) {
         this.setState({timeFormat: eventKey})
-    }
-
-    get24hTime(str){
-        str = String(str).toLowerCase().replace(/\s/g, '');
-        var has_am = str.indexOf('am') >= 0;
-        var has_pm = str.indexOf('pm') >= 0;
-        str = str.replace('am', '').replace('pm', '');
-        if (str.indexOf(':') < 0) str = str + ':00';
-        if (has_am) str += ' am';
-        if (has_pm) str += ' pm';
-        var d = new Date("1/1/2011 " + str);
-        var doubleDigits = function(n){
-            return (parseInt(n) < 10) ? "0" + n : String(n);
-        };
-        return doubleDigits(d.getHours()) + ':' + doubleDigits(d.getMinutes()+ ':' + doubleDigits(d.getSeconds()));
     }
 
     render() {
